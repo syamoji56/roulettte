@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet var rouletteDisplayLabel: UILabel!
     @IBOutlet weak var circle: UIImageView!
     @IBOutlet weak var rouletteView: UIView!
+    @IBOutlet weak var circleView1: UILabel!
     
     var rouletteContents:[String]=["大吉","中吉","小吉","吉"]
     var contentsNumber = 0
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
         }
         if rouletteContents.count > 0 {
             rouletteDisplayLabel.text=rouletteContents[contentsNumber]
+            circleView1.text=rouletteContents[contentsNumber]
         }
 
         angleCount += 10
