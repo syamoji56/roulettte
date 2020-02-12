@@ -12,11 +12,13 @@ class ViewController: UIViewController {
     
     @IBOutlet var startAndStopButton: UIButton!
     @IBOutlet var rouletteDisplayLabel: UILabel!
+    @IBOutlet weak var circle: UIImageView!
+    @IBOutlet weak var rouletteView: UIView!
     
     var rouletteContents:[String]=["大吉","中吉","小吉","吉"]
     var contentsNumber = 0
     var timer=Timer()
-    
+    var angleCount:CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class ViewController: UIViewController {
     
     func timerAction(){
         if !timer.isValid {
-            timer=Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.timeUpdate), userInfo: nil, repeats: true)
+            timer=Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.timeUpdate), userInfo: nil, repeats: true)
         }
         else{
             timer.invalidate()
@@ -45,6 +47,10 @@ class ViewController: UIViewController {
         if rouletteContents.count > 0 {
             rouletteDisplayLabel.text=rouletteContents[contentsNumber]
         }
+
+        angleCount += 10
+        let angle =  angleCount * CGFloat.pi / 180
+        rouletteView.transform=CGAffineTransform(rotationAngle: angle)
     }
     
     func buttonTitleUpdate(){
