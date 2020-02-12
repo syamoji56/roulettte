@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         circleView2.text=rouletteContents[1]
         circleView3.text=rouletteContents[2]
         circleView4.text=rouletteContents[3]
-        print("agageg")
     }
     
     @IBAction func startAndStopButtonAction(_ sender: Any) {
@@ -76,16 +75,14 @@ class ViewController: UIViewController {
         }
         buttonTitleUpdate()
         performSegue(withIdentifier: "next", sender: nil)
-        
     }
-    
+    //画面遷移時に値の受け渡し　changeViewButtonActionのperformSegueに関連する
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC=segue.destination as! EditViewController
         nextVC.editRouletteContents=rouletteContents
     }
     
     func setContents(contents:[String]){
-        
         rouletteContents=contents
         circleView1.text=rouletteContents[0]
         circleView2.text=rouletteContents[1]
