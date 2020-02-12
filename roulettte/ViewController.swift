@@ -31,6 +31,8 @@ class ViewController: UIViewController {
         circleView2.text=rouletteContents[1]
         circleView3.text=rouletteContents[2]
         circleView4.text=rouletteContents[3]
+        
+        rouletteDisplayLabel.isHidden=true
     }
     
     @IBAction func startAndStopButtonAction(_ sender: Any) {
@@ -56,7 +58,11 @@ class ViewController: UIViewController {
             rouletteDisplayLabel.text=rouletteContents[contentsNumber]
         }
         
-        angleCount += 10
+        angleCount += 11
+        if angleCount >= 360{
+            angleCount -= 360
+        }
+        print(angleCount)
         let angle =  angleCount * CGFloat.pi / 180
         rouletteView.transform=CGAffineTransform(rotationAngle: angle)
     }
