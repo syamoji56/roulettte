@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var circle: UIImageView!
     @IBOutlet weak var rouletteView: UIView!
     @IBOutlet weak var circleView1: UILabel!
+    @IBOutlet weak var circleView2: UILabel!
+    @IBOutlet weak var circleView3: UILabel!
+    @IBOutlet weak var circleView4: UILabel!
     
     var rouletteContents:[String]=["大吉","中吉","小吉","吉"]
     var contentsNumber = 0
@@ -24,6 +27,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        circleView1.text=rouletteContents[0]
+        circleView2.text=rouletteContents[1]
+        circleView3.text=rouletteContents[2]
+        circleView4.text=rouletteContents[3]
+        print("agageg")
     }
     
     @IBAction func startAndStopButtonAction(_ sender: Any) {
@@ -47,9 +55,8 @@ class ViewController: UIViewController {
         }
         if rouletteContents.count > 0 {
             rouletteDisplayLabel.text=rouletteContents[contentsNumber]
-            circleView1.text=rouletteContents[contentsNumber]
         }
-
+        
         angleCount += 10
         let angle =  angleCount * CGFloat.pi / 180
         rouletteView.transform=CGAffineTransform(rotationAngle: angle)
@@ -65,7 +72,7 @@ class ViewController: UIViewController {
     
     @IBAction func changeViewButtonAction(_ sender: Any) {
         if timer.isValid {
-         timer.invalidate()
+            timer.invalidate()
         }
         buttonTitleUpdate()
         performSegue(withIdentifier: "next", sender: nil)
@@ -78,8 +85,12 @@ class ViewController: UIViewController {
     }
     
     func setContents(contents:[String]){
-    
+        
         rouletteContents=contents
+        circleView1.text=rouletteContents[0]
+        circleView2.text=rouletteContents[1]
+        circleView3.text=rouletteContents[2]
+        circleView4.text=rouletteContents[3]
     }
 }
 
